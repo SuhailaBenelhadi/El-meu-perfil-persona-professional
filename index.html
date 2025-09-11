@@ -38,6 +38,15 @@
       display: flex; align-items: center; justify-content: center;
       color: white; font-weight: 700; font-size: 28px;
       box-shadow: 0 0 15px var(--accent-glow);
+      border-radius: 50%;
+      overflow: hidden; /* importante para que la imagen respete el borde redondeado */
+    }
+    .avatar img {
+      width: 96px;
+      height: 96px;
+      border-radius: 50%;
+      object-fit: cover; /* Ajusta la foto para que no se deforme */
+      display: block;
     }
 
     h1 { font-size: 1.8rem; margin: 0; color: var(--accent); }

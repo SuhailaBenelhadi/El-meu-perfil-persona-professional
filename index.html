@@ -122,17 +122,22 @@
       font-size: 0.85rem;
     }
 
-    /* 🎥 Estilo extra para el video */
-    .video-container {
-      margin-top: 12px;
+    /* 🎥 Estilo para video tipo reel (YouTube Shorts) */
+    .video-container-vertical {
+      position: relative;
+      width: 100%;
+      padding-bottom: 177.78%; /* Proporción 9:16 */
       border-radius: 12px;
       overflow: hidden;
       box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      margin-top: 12px;
     }
-    .video-container iframe {
-      display: block;
+    .video-container-vertical iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
       width: 100%;
-      height: 315px;
+      height: 100%;
       border: none;
     }
   </style>
@@ -161,18 +166,18 @@
 
     <section class="card" aria-labelledby="motiv-title">
       <h2 id="motiv-title">Motivació</h2>
-      <p>Estic motivada per cursar Recursos TIC i Educació Inclusiva perquè considero que les tecnologies ben aplicades poden reduir barreres d'aprenentatge. Vull aprendre a dissenyar materials inclusius i accessibles.</p>
+      <p>En una societat i una educació en constant transformació cap a un món cada vegada més tecnològic, conèixer i saber utilitzar les TIC és essencial per afrontar els reptes presents i futurs. Per això estic motivada per cursar Recursos TIC i Educació Inclusiva, ja que crec que les tecnologies, ben aplicades, poden reduir barreres d’aprenentatge i permetre dissenyar materials inclusius i accessibles per a tot l’alumnat.</p>
     </section>
 
     <section class="card" aria-labelledby="exp-title">
       <h2 id="exp-title">Experiència prèvia</h2>
-      <p>He desenvolupat tasques com a vetlladora en centres educatius amb infants diagnosticats de trastorn de l’espectre autista i amb síndrome de Down. Aquesta experiència m’ha permès ampliar i aprofundir els meus coneixements en l’àmbit de l’educació inclusiva, adquirint una visió més integral sobre la importància de garantir l’equitat, la participació i l’atenció personalitzada dins l’entorn escolar.</p>
+      <p>Tinc experiència amb diferents TIC com Canva, Zoom, Google, Word i PowerPoint entre d’altres, que m’han permès elaborar materials, organitzar tasques i comunicar-me de manera més eficient en contextos acadèmics i professionals. Alhora, he treballat com a vetlladora amb infants amb TEA, TDAH i síndrome de Down, fet que m’ha ajudat a comprendre millor la importància de l’educació inclusiva i de garantir l’equitat i la participació dins l’aula.</p>
       
-      <!-- 🎥 Vídeo de YouTube -->
-      <div class="video-container">
+      <!-- 🎥 Vídeo en formato reel -->
+      <div class="video-container-vertical">
         <iframe src="https://www.youtube.com/embed/iequu7ryxN8" 
-          title="Vídeo experiència prèvia" 
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+          title="Vídeo experiència prèvia"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowfullscreen>
         </iframe>
       </div>

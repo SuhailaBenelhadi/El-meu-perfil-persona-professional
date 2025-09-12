@@ -126,11 +126,12 @@
     .video-container-vertical {
       position: relative;
       width: 100%;
-      padding-bottom: 177.78%; /* Proporción 9:16 */
+      max-width: 320px;   /* 👈 límite de tamaño, así no ocupa toda la pantalla */
+      margin: 12px auto;  /* 👈 centrado */
+      padding-bottom: 177.78%; /* relación 9:16 (reel/shorts) */
       border-radius: 12px;
       overflow: hidden;
       box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-      margin-top: 12px;
     }
     .video-container-vertical iframe {
       position: absolute;

@@ -1,305 +1,181 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ca">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Perfil Persona - Estudiant de Pedagogia</title>
-  <meta name="description" content="Perfil persona professional - Estudiant de Pedagogia. Recursos TIC i Educació Inclusiva." />
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pàgina Accessible - Suhaila Ben El Hadi</title>
   <style>
     :root {
-      --accent: #BFA9A0;      
-      --accent-glow: #D0B7B0; 
-      --muted: #6B5D57;        /* 🔧 Contraste mejorado */
-      --card-bg: #FFFFFF;      
-      --text: #2C2A28;        
-      --bg: #F5F2F0;          
+      --bg: #f5f2f0;
+      --text: #2b2b2b;
+      --secondary: #6b5d57;
+      --accent: #8C7C76;
+      --highlight: #ffcc00;
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    [data-contrast="high"] {
+      --bg: #000;
+      --text: #fff;
+      --secondary: #eee;
+      --accent: #ffcc00;
+    }
+
     body {
-      font-family: "Inter", system-ui, sans-serif;
       background: var(--bg);
       color: var(--text);
+      font-family: "Helvetica Neue", sans-serif;
+      margin: 0;
+      padding: 0;
       line-height: 1.6;
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
+      transition: background 0.3s, color 0.3s;
     }
 
-    .container { max-width: 900px; margin: 32px auto; padding: 20px; width: 100%; }
+    header {
+      text-align: center;
+      padding: 2rem;
+    }
 
-    /* 🔗 Enlace para saltar al contenido */
+    main {
+      max-width: 700px;
+      margin: auto;
+      padding: 1rem;
+    }
+
+    button, a {
+      cursor: pointer;
+      border: none;
+      background: var(--accent);
+      color: #fff;
+      padding: 0.6rem 1rem;
+      margin: 0.5rem;
+      border-radius: 8px;
+      font-size: 1rem;
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    button:hover, a:hover, button:focus, a:focus {
+      background: var(--highlight);
+      color: #000;
+      outline: 3px solid var(--highlight);
+      transform: scale(1.05);
+    }
+
+    .controls {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
     .skip-link {
       position: absolute;
       top: -40px;
       left: 0;
       background: #000;
       color: #fff;
-      padding: 8px 12px;
+      padding: 8px;
       z-index: 100;
-      border-radius: 4px;
       transition: top 0.3s;
     }
-    .skip-link:focus { top: 0; }
 
-    header {
-      display: flex; gap: 16px; align-items: center; margin-bottom: 20px;
+    .skip-link:focus {
+      top: 0;
     }
 
-    .avatar {
-      width: 96px; height: 96px; border-radius: 50%;
-      background: var(--accent);
-      display: flex; align-items: center; justify-content: center;
-      color: white; font-weight: 700; font-size: 28px;
-      box-shadow: 0 0 15px var(--accent-glow);
-      overflow: hidden;
-    }
-    .avatar img {
-      width: 96px;
-      height: 96px;
-      border-radius: 50%;
-      object-fit: cover;
-      display: block;
-    }
-
-    h1 { font-size: 1.8rem; margin: 0; color: var(--accent); }
-    p.lead { margin-top: 6px; color: var(--muted); }
-
-    .card {
-      background: var(--card-bg);
-      border-radius: 16px;
-      padding: 20px;
-      margin-top: 18px;
-      border: 1px solid rgba(0,0,0,0.08);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    }
-
-    h2 {
-      font-size: 1.3rem;
-      color: var(--accent);
-      margin-bottom: 10px;
-      border-bottom: 1px solid rgba(0,0,0,0.08);
-      padding-bottom: 6px;
-    }
-
-    dl { display: grid; grid-template-columns: 150px 1fr; gap: 10px 18px; }
-    dt { font-weight: 600; color: var(--muted); }
-    dd { margin: 0; }
-
-    ul { margin: 6px 0 0; padding-left: 20px; }
-    li { margin-bottom: 6px; }
-
-    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-    @media(max-width:700px){ .grid-2 { grid-template-columns: 1fr; } dl { grid-template-columns: 120px 1fr; } }
-
-    .actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 12px; }
-    a.button {
-      display: inline-block;
-      padding: 10px 16px;
-      border-radius: 10px;
-      text-decoration: none;
-      font-weight: 600;
-      color: white;
-      background: var(--accent);
-      box-shadow: 0 0 10px rgba(191,169,160,0.6);
-      transition: transform 0.2s, box-shadow 0.3s;
-    }
-    a.button:hover { transform: translateY(-2px); box-shadow: 0 0 18px var(--accent-glow); }
-    a.ghost {
-      background: transparent;
-      border: 1px solid var(--accent);
-      color: var(--accent);
-    }
-
-    blockquote {
-      border-left: 4px solid var(--accent);
-      padding-left: 12px;
-      color: var(--muted);
-      font-style: italic;
-      margin-top: 8px;
+    iframe {
+      width: 100%;
+      height: 350px;
+      border-radius: 12px;
+      border: 0;
     }
 
     footer {
-      margin-top: 20px;
-      color: var(--muted);
+      text-align: center;
+      margin-top: 2rem;
+      padding: 1rem;
       font-size: 0.9rem;
-      padding-top: 12px;
-      border-top: 1px solid rgba(0,0,0,0.08);
+      color: var(--secondary);
     }
-
-    pre {
-      background: rgba(0,0,0,0.02);
-      padding: 8px;
-      border-radius: 6px;
-      overflow-x: auto;
-      font-size: 0.85rem;
-    }
-
-    /* 🎥 Vídeo vertical (tipo reel) */
-    .video-container-vertical {
-      position: relative;
-      width: 100%;
-      max-width: 350px;
-      margin: 12px auto;
-      padding-bottom: 75%;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-    }
-    .video-container-vertical iframe {
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      border: none;
-    }
-
-    /* 🔊 Botón de voz accesible */
-    #btn-veu {
-      background-color: #0078d7;
-      color: white;
-      font-size: 1.2rem;
-      padding: 0.8rem 1.5rem;
-      border: none;
-      border-radius: 12px;
-      cursor: pointer;
-      transition: background-color 0.3s, transform 0.2s;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-    #btn-veu:hover { background-color: #005fa3; transform: scale(1.05); }
-    #btn-veu:active { transform: scale(0.97); }
-    #btn-veu:focus { outline: 3px solid #ffcc00; outline-offset: 3px; }
   </style>
 </head>
-
 <body>
   <a href="#main-content" class="skip-link">Saltar al contingut principal</a>
 
-  <main id="main-content" class="container" role="main">
-    <header>
-      <div class="avatar">
-        <img src="SH.jpg" alt="Foto de Suhaila Ben El Hadi" />
-      </div>
-      <div>
-        <h1>Perfil Persona - Estudiant de Pedagogia</h1>
-        <p class="lead">Perfil professional per a l'assignatura Recursos TIC i Educació Inclusiva</p>
-      </div>
-    </header>
+  <header>
+    <h1 id="title">Suhaila Ben El Hadi</h1>
+    <p>CV digital accessible</p>
+  </header>
 
-    <section class="card" aria-labelledby="ident-title">
-      <h2 id="ident-title">Identificació</h2>
-      <dl>
-        <dt>Nom</dt><dd>Suhaila Ben el Hadi El messaoudi</dd>
-        <dt>Correu</dt><dd><a href="mailto:Suhabenelhadi@gmail.com">Suhabenelhadi@gmail.com</a></dd>
-        <dt>Xarxes</dt>
-        <dd>
-          <a href="https://www.instagram.com/suhailabenelhadi"
-             target="_blank" rel="noopener"
-             aria-label="Perfil d'Instagram de Suhaila Ben El Hadi (s'obre en una pestanya nova)">
-             Instagram
-          </a>
-        </dd>
-      </dl>
-    </section>
+  <div class="controls">
+    <button id="readAll">🔊 Llegir tota la pàgina</button>
+    <button id="contrastToggle">🎨 Canviar contrast</button>
+  </div>
 
-    <section class="card" aria-labelledby="motiv-title" style="max-width: 600px; margin: 2rem auto;">
-      <h2 id="motiv-title">Motivació</h2>
-      <p id="motiv-text" aria-live="polite">
-        En una societat i una educació en constant transformació cap a un món cada vegada més tecnològic, conèixer i saber utilitzar les TIC és essencial per afrontar els reptes presents i futurs. Per això estic motivada per cursar Recursos TIC i Educació Inclusiva, ja que crec que les tecnologies, ben aplicades, poden reduir barreres d’aprenentatge i permetre dissenyar materials inclusius i accessibles per a tot l’alumnat.
-      </p>
+  <main id="main-content">
+    <h2 id="intro">Sobre mi</h2>
+    <p id="motiv-text">
+      Sóc una estudiant de telecomunicacions apassionada per la tecnologia i la innovació. 
+      Aquesta pàgina està dissenyada per ser accessible i inclusiva per a tothom.
+    </p>
 
-      <button id="btn-veu" onclick="llegirText()" aria-label="Escoltar el text motivacional">
-        🔊 Escoltar
-      </button>
-    </section>
+    <h3 id="video-title">Vídeo de presentació</h3>
+    <iframe 
+      src="https://www.youtube.com/embed/iequu7ryxN8" 
+      title="Vídeo de presentació de Suhaila Ben El Hadi amb subtítols activats"
+      allow="autoplay; encrypted-media"
+      allowfullscreen>
+    </iframe>
 
-    <section class="card" aria-labelledby="exp-title">
-      <h2 id="exp-title">Experiència prèvia</h2>
-      <p>Tinc experiència amb diferents TIC com Canva, Zoom, Google, Word i PowerPoint, que m’han permès elaborar materials, organitzar tasques i comunicar-me millor. També he treballat com a vetlladora amb infants amb TEA, TDAH i síndrome de Down, fet que m’ha ajudat a comprendre la importància de l’educació inclusiva.</p>
-
-      <div class="video-container-vertical">
-        <iframe src="https://www.youtube.com/embed/iequu7ryxN8"
-          title="Vídeo sobre experiència prèvia amb subtítols disponibles"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen>
-        </iframe>
-      </div>
-    </section>
-
-    <section class="card grid-2" aria-labelledby="compet-title">
-      <div>
-        <h2 id="compet-title">Competència Digital</h2>
-        <ul>
-          <li><strong>Google Drive / Docs / Slides:</strong> elaboració de materials i treballs col·laboratius.</li>
-          <li><strong>Moodle:</strong> pujar recursos i crear activitats per a l’alumnat.</li>
-          <li><strong>Canva / Genially:</strong> crear recursos visuals i interactius.</li>
-          <li><strong>Edpuzzle / YouTube:</strong> creació i edició de recursos multimèdia.</li>
-          <li><strong>Eines d’accessibilitat:</strong> lector de pantalla, subtítols i gestors de contrast.</li>
-        </ul>
-      </div>
-      <div>
-        <h2>Punts forts i febles</h2>
-        <dl>
-          <dt>Punts forts</dt>
-          <dd>Empatia amb l’alumnat, creativitat en materials didàctics, facilitat per treballar en equip.</dd>
-          <dt>Punts febles</dt>
-          <dd>Necessito consolidar habilitats tècniques avançades i millorar la gestió del temps en projectes llargs.</dd>
-        </dl>
-      </div>
-    </section>
-
-    <section class="card" aria-labelledby="expect-title">
-      <h2 id="expect-title">Què espero de l'assignatura</h2>
-      <p>Aprendre estratègies, eines i adaptacions pràctiques per fer les classes més inclusives i accessibles.</p>
-    </section>
-
-    <section class="card grid-2" aria-labelledby="objectives-title">
-      <div>
-        <h2 id="objectives-title">Objectiu i compromís personal</h2>
-        <p>Em comprometo a realitzar les activitats amb rigor i aplicar el que aprengui a les meves pràctiques.</p>
-      </div>
-      <div>
-        <h2>Objectiu professional</h2>
-        <p>Vull treballar com a pedagoga en centres educatius o en projectes d’inclusió escolar.</p>
-      </div>
-    </section>
-
-    <section class="card" aria-labelledby="aps-title">
-      <h2 id="aps-title">Com ajuda una experiència APS</h2>
-      <p>Participar en un Aprenentatge-Servei (APS) permet aplicar coneixements en projectes reals, generar impacte social i desenvolupar habilitats socioemocionals.</p>
-    </section>
-
-    <section class="card" aria-labelledby="other-title">
-      <h2 id="other-title">Altra informació d’interès</h2>
-      <p>Sóc compromesa amb l’educació com a eina transformadora. M’interessa la innovació educativa i el disseny de recursos.</p>
-      <div class="actions">
-        <a class="button" href="Curriculum SUHAILA-18.pdf" target="_blank" rel="noopener"
-           aria-label="Descarregar el meu currículum en PDF (s'obre en una pestanya nova)">
-           Descarregar el meu Curriculum (PDF)
-        </a>
-      </div>
-    </section>
-
-    <section class="card" aria-labelledby="reflex-title">
-      <h2 id="reflex-title">Reflexió sobre l'activitat</h2>
-      <p>He trobat reptes en inserir el vídeo i fer el disseny responsiu, però després de provar diferents solucions he aconseguit que tot funcioni correctament. Durant aquesta activitat he après a organitzar la informació de manera clara i atractiva, i a crear un perfil persona accessible per a qualsevol usuari.</p>
-    </section>
-
-    <footer>
-      <p>&copy; 2025 Suhaila Ben El Hadi · Disseny adaptat per a accessibilitat web (WCAG 2.1 AA)</p>
-    </footer>
+    <h3>Contacte</h3>
+    <p>
+      📧 <a href="mailto:suhaila@example.com" 
+      aria-label="Enviar correu electrònic a Suhaila">suhaila@example.com</a><br>
+      🌐 <a href="https://www.instagram.com/suhailabenelhadi" target="_blank" rel="noopener" 
+      aria-label="Visitar el perfil d'Instagram de Suhaila (s'obre en una pestanya nova)">Instagram</a>
+    </p>
   </main>
 
+  <footer>
+    Fet amb 💛 per Suhaila Ben El Hadi — Accessible per tothom ♿
+  </footer>
+
   <script>
-  function llegirText() {
-    speechSynthesis.cancel(); // 👈 Detén lectura anterior si existeix
-    const text = document.getElementById("motiv-text").innerText;
-    const utterance = new SpeechSynthesisUtterance(text);
-    utterance.lang = "ca-ES";
-    speechSynthesis.speak(utterance);
-  }
+    // --- Funció 1: Llegir tota la pàgina ---
+    document.getElementById("readAll").addEventListener("click", () => {
+      speechSynthesis.cancel();
+      const text = document.body.innerText;
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.lang = "ca-ES";
+      speechSynthesis.speak(utterance);
+    });
+
+    // --- Funció 2: Canviar contrast ---
+    const contrastBtn = document.getElementById("contrastToggle");
+    contrastBtn.addEventListener("click", () => {
+      const current = document.documentElement.getAttribute("data-contrast");
+      if (current === "high") {
+        document.documentElement.removeAttribute("data-contrast");
+        contrastBtn.textContent = "🎨 Canviar contrast";
+      } else {
+        document.documentElement.setAttribute("data-contrast", "high");
+        contrastBtn.textContent = "☀️ Contrast normal";
+      }
+    });
+
+    // --- Funció 3: Lectura al passar el ratolí ---
+    const elementsToRead = document.querySelectorAll("h1, h2, h3, button, a");
+    elementsToRead.forEach(el => {
+      el.addEventListener("mouseenter", () => {
+        speechSynthesis.cancel();
+        const utterance = new SpeechSynthesisUtterance(el.innerText);
+        utterance.lang = "ca-ES";
+        speechSynthesis.speak(utterance);
+      });
+    });
+
+    // --- Millora: Evita que el lector de pantalla se solapi ---
+    window.addEventListener("beforeunload", () => speechSynthesis.cancel());
   </script>
 </body>
 </html>

@@ -182,7 +182,35 @@ function llegirText() {
   speechSynthesis.speak(utterance);
 }
 </script>
+<style>
+#btn-veu {
+  background-color: #0078d7;
+  color: white;
+  font-size: 1.2rem;
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
 
+#btn-veu:hover {
+  background-color: #005fa3;
+  transform: scale(1.05);
+}
+
+#btn-veu:active {
+  transform: scale(0.97);
+}
+
+#btn-veu:focus {
+  outline: 3px solid #ffcc00;
+  outline-offset: 3px;
+}
+</style>
 
     <section class="card" aria-labelledby="exp-title">
       <h2 id="exp-title">Experiència prèvia</h2>

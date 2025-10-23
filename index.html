@@ -1,237 +1,369 @@
 <!doctype html>
 <html lang="ca">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Perfil Persona - Estudiant de Pedagogia</title>
-  <meta name="description" content="Perfil persona professional - Estudiant de Pedagogia. Recursos TIC i Educació Inclusiva." />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Perfil Persona - Estudiant de Pedagogia</title>
+<meta name="description" content="Perfil persona professional - Estudiant de Pedagogia. Recursos TIC i Educació Inclusiva." />
+<style>
+/* --- VARIABLES ORIGINALES --- */
+:root { 
+    --accent: #BFA9A0; 
+    --accent-glow: #D0B7B0; 
+    --muted: #8C7C76; 
+    --card-bg: #FFFFFF; 
+    --text: #2C2A28; 
+    --bg: #F5F2F0; 
+} 
 
-  <style>
-    :root {
-      --accent: #BFA9A0;
-      --accent-glow: #D0B7B0;
-      --muted: #8C7C76;
-      --card-bg: #FFFFFF;
-      --text: #2C2A28;
-      --bg: #F5F2F0;
-    }
+/* --- NUEVAS VARIABLES DE ALTO CONTRASTE (HC) --- */
+body.high-contrast {
+    --accent: #FFCC00; /* Amarillo brillante para acento */
+    --accent-glow: #FFFF00;
+    --muted: #AAAAAA;
+    --card-bg: #000000; /* Fondo de tarjetas negro */
+    --text: #FFFFFF; /* Texto blanco */
+    --bg: #111111; /* Fondo de página muy oscuro */
+}
 
-    body.alt-contrast {
-      --bg: #000000;
-      --text: #FFFFFF;
-      --card-bg: #1A1A1A;
-      --accent: #FFD700;
-      --muted: #CCCCCC;
-    }
+/* --- ESTILOS BASE (Mantenidos) --- */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { 
+    font-family: "Inter", system-ui, sans-serif; 
+    background: var(--bg); 
+    color: var(--text); 
+    line-height: 1.6; 
+    min-height: 100vh; 
+    display: flex; 
+    justify-content: center; 
+} 
+.container { max-width: 900px; margin: 32px auto; padding: 20px; width: 100%; } 
+header { display: flex; gap: 16px; align-items: center; margin-bottom: 20px; } 
+.avatar { 
+    width: 96px; height: 96px; border-radius: 50%; 
+    background: var(--accent); 
+    display: flex; align-items: center; justify-content: center; 
+    color: white; font-weight: 700; font-size: 28px; 
+    box-shadow: 0 0 15px var(--accent-glow); 
+    border-radius: 50%; overflow: hidden; 
+} 
+.avatar img { width: 96px; height: 96px; border-radius: 50%; object-fit: cover; display: block; } 
+h1 { font-size: 1.8rem; margin: 0; color: var(--accent); } 
+p.lead { margin-top: 6px; color: var(--muted); } 
+.card { 
+    background: var(--card-bg); 
+    border-radius: 16px; 
+    padding: 20px; 
+    margin-top: 18px; 
+    border: 1px solid rgba(0,0,0,0.08); 
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1); 
+} 
+/* Estilo del borde para HC para que sea visible */
+body.high-contrast .card {
+    border: 1px solid var(--accent);
+    box-shadow: none;
+}
+h2 { 
+    font-size: 1.3rem; 
+    color: var(--accent); 
+    margin-bottom: 10px; 
+    border-bottom: 1px solid rgba(0,0,0,0.08); 
+    padding-bottom: 6px; 
+} 
+body.high-contrast h2 {
+    border-bottom: 1px solid var(--accent);
+}
+dl { display: grid; grid-template-columns: 150px 1fr; gap: 10px 18px; } 
+dt { font-weight: 600; color: var(--muted); } 
+dd { margin: 0; } 
+ul { margin: 6px 0 0; padding-left: 20px; } 
+li { margin-bottom: 6px; } 
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; } 
+@media(max-width:700px){ 
+    .grid-2 { grid-template-columns: 1fr; } 
+    dl { grid-template-columns: 120px 1fr; } 
+} 
+.actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 12px; } 
+a.button { 
+    display: inline-block; padding: 10px 16px; 
+    border-radius: 10px; text-decoration: none; 
+    font-weight: 600; color: white; 
+    background: var(--accent); 
+    box-shadow: 0 0 10px rgba(191,169,160,0.6); 
+    transition: transform 0.2s, box-shadow 0.3s; 
+} 
+a.button:hover { transform: translateY(-2px); box-shadow: 0 0 18px var(--accent-glow); } 
+a.ghost { background: transparent; border: 1px solid var(--accent); color: var(--accent); } 
+blockquote { border-left: 4px solid var(--accent); padding-left: 12px; color: var(--muted); font-style: italic; margin-top: 8px; } 
+footer { margin-top: 20px; color: var(--muted); font-size: 0.9rem; padding-top: 12px; border-top: 1px solid rgba(0,0,0,0.08); } 
+pre { background: rgba(0,0,0,0.02); padding: 8px; border-radius: 6px; overflow-x: auto; font-size: 0.85rem; } 
+.video-container-vertical { 
+    position: relative; width: 100%; max-width: 350px; 
+    margin: 12px auto; 
+    padding-bottom: 75%; 
+    border-radius: 12px; overflow: hidden; 
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15); 
+} 
+.video-container-vertical iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; } 
+#btn-veu { 
+    background-color: #0078d7; color: white; font-size: 1.2rem; 
+    padding: 0.8rem 1.5rem; border: none; border-radius: 12px; 
+    cursor: pointer; transition: background-color 0.3s, transform 0.2s; 
+    display: inline-flex; align-items: center; gap: 0.5rem; 
+} 
+#btn-veu:hover { background-color: #005fa3; transform: scale(1.05); } 
+#btn-veu:active { transform: scale(0.97); } 
+#btn-veu:focus { outline: 3px solid #ffcc00; outline-offset: 3px; } 
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      font-family: "Inter", system-ui, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-    }
+/* --- ESTILO NUEVO: Botón de Contraste --- */
+#toggle-contrast {
+    /* Base */
+    background: var(--text);
+    color: var(--card-bg);
+    border: 2px solid var(--accent);
+    padding: 8px 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.2s;
+    margin-left: 20px;
+}
+#toggle-contrast:hover {
+    background: var(--accent);
+    color: white;
+}
+/* Estilo del botón en modo Alto Contraste */
+body.high-contrast #toggle-contrast {
+    background: var(--card-bg); 
+    color: var(--accent); 
+    border: 2px solid var(--accent);
+}
 
-    .container { max-width: 900px; margin: 32px auto; padding: 20px; width: 100%; }
+/* --- ESTILO NUEVO: Resaltar texto al leer (opcional, para feedback visual) --- */
+.reading-text {
+    background-color: var(--accent-glow); /* Fondo de resaltado */
+    color: var(--text);
+    padding: 2px 4px;
+    border-radius: 3px;
+    display: inline-block;
+}
+body.high-contrast .reading-text {
+    background-color: var(--accent);
+    color: var(--bg);
+}
 
-    header { display: flex; gap: 16px; align-items: center; margin-bottom: 20px; }
-
-    .avatar {
-      width: 96px; height: 96px; border-radius: 50%;
-      background: var(--accent);
-      display: flex; align-items: center; justify-content: center;
-      color: white; font-weight: 700; font-size: 28px;
-      box-shadow: 0 0 15px var(--accent-glow);
-      overflow: hidden;
-    }
-
-    .avatar img { width: 96px; height: 96px; border-radius: 50%; object-fit: cover; display: block; }
-
-    h1 { font-size: 1.8rem; margin: 0; color: var(--accent); }
-    p.lead { margin-top: 6px; color: var(--muted); }
-
-    .card {
-      background: var(--card-bg);
-      border-radius: 16px;
-      padding: 20px;
-      margin-top: 18px;
-      border: 1px solid rgba(0,0,0,0.08);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    }
-
-    h2 {
-      font-size: 1.3rem;
-      color: var(--accent);
-      margin-bottom: 10px;
-      border-bottom: 1px solid rgba(0,0,0,0.08);
-      padding-bottom: 6px;
-    }
-
-    dl { display: grid; grid-template-columns: 150px 1fr; gap: 10px 18px; }
-    dt { font-weight: 600; color: var(--muted); }
-    dd { margin: 0; }
-
-    ul { margin: 6px 0 0; padding-left: 20px; }
-    li { margin-bottom: 6px; }
-
-    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-    @media(max-width:700px){ .grid-2 { grid-template-columns: 1fr; } dl { grid-template-columns: 120px 1fr; } }
-
-    .actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 12px; }
-    a.button {
-      display: inline-block;
-      padding: 10px 16px;
-      border-radius: 10px;
-      text-decoration: none;
-      font-weight: 600;
-      color: white;
-      background: var(--accent);
-      box-shadow: 0 0 10px rgba(191,169,160,0.6);
-      transition: transform 0.2s, box-shadow 0.3s;
-    }
-    a.button:hover, button:hover { transform: translateY(-2px); box-shadow: 0 0 18px var(--accent-glow); }
-    a.ghost {
-      background: transparent;
-      border: 1px solid var(--accent);
-      color: var(--accent);
-    }
-
-    button {
-      cursor: pointer;
-      font-size: 1rem;
-      border: none;
-      border-radius: 8px;
-      padding: 10px 16px;
-      background: var(--accent);
-      color: white;
-      transition: 0.3s;
-    }
-    button:focus, a:focus { outline: 3px solid #FFD700; outline-offset: 3px; }
-
-    blockquote { border-left: 4px solid var(--accent); padding-left: 12px; color: var(--muted); font-style: italic; margin-top: 8px; }
-
-    footer { margin-top: 20px; color: var(--muted); font-size: 0.9rem; padding-top: 12px; border-top: 1px solid rgba(0,0,0,0.08); }
-
-    /* 🎥 Estilo per vídeo tipus Reel */
-    .video-container-vertical {
-      position: relative; width: 100%; max-width: 350px; margin: 12px auto;
-      padding-bottom: 75%; border-radius: 12px; overflow: hidden;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-    }
-    .video-container-vertical iframe {
-      position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;
-    }
-
-    /* 🔊 Panell d'accessibilitat */
-    #accessibility-panel {
-      position: fixed;
-      top: 10px; right: 10px;
-      display: flex;
-      gap: 10px;
-      z-index: 1000;
-    }
-
-    #accessibility-panel button {
-      background: var(--accent);
-      color: white;
-      padding: 10px 14px;
-      border-radius: 10px;
-      border: none;
-      cursor: pointer;
-      font-weight: 600;
-    }
-    #accessibility-panel button:hover {
-      background: var(--accent-glow);
-    }
-  </style>
+</style>
 </head>
 <body>
-  <!-- 🔊 Panell d'accessibilitat -->
-  <div id="accessibility-panel">
-    <button onclick="llegirPagina()" aria-label="Llegir tota la pàgina">🔊 Llegir pàgina</button>
-    <button onclick="canviarContrast()" aria-label="Canviar contrast de la pàgina">🌓 Canviar contrast</button>
-  </div>
-
-  <main class="container" role="main">
+<main class="container" role="main">
     <header>
-      <div class="avatar">
-        <img src="SH.jpg" alt="Foto de Suhaila Ben El Hadi" />
-      </div>
-      <div>
-        <h1>Perfil Persona - Estudiant de Pedagogia</h1>
-        <p class="lead">Perfil professional per a l'assignatura Recursos TIC i Educació Inclusiva</p>
-      </div>
+        <div class="avatar">
+            <img src="SH.jpg" alt="Foto de Suhaila Ben El Hadi" />
+        </div>
+        <div>
+            <h1>Perfil Persona - Estudiant de Pedagogia</h1>
+            <p class="lead">Perfil professional per a l'assignatura Recursos TIC i Educació Inclusiva</p>
+        </div>
+        <button id="toggle-contrast" aria-pressed="false" title="Alternar modo de alto contraste">
+            Contraste 🔆
+        </button>
     </header>
 
     <section class="card" aria-labelledby="ident-title">
-      <h2 id="ident-title">Identificació</h2>
-      <dl>
-        <dt>Nom</dt><dd>Suhaila Ben el Hadi El messaoudi</dd>
-        <dt>Correu</dt><dd><a href="mailto:Suhabenelhadi@gmail.com">Suhabenelhadi@gmail.com</a></dd>
-        <dt>Xarxes</dt><dd><a href="https://www.instagram.com/suhailabenelhadi?igsh=OHp4dHhsaDB1ZHdl" target="_blank" rel="noopener">Instagram</a></dd>
-      </dl>
+        <h2 id="ident-title">Identificació</h2>
+        <dl>
+            <dt>Nom</dt><dd>Suhaila Ben el Hadi El messaoudi</dd>
+            <dt>Correu</dt><dd>Suhabenelhadi@gmail.com</dd>
+            <dt>Xarxes</dt><dd><a href="https://www.instagram.com/suhailabenelhadi?igsh=OHp4dHhsaDB1ZHdl">Instagram</a></dd>
+        </dl>
     </section>
 
-    <section class="card" aria-labelledby="motiv-title">
-      <h2 id="motiv-title">Motivació</h2>
-      <p id="motiv-text">
-        En una societat i una educació en constant transformació cap a un món cada vegada més tecnològic,
-        conèixer i saber utilitzar les TIC és essencial per afrontar els reptes presents i futurs.
-        Per això estic motivada per cursar Recursos TIC i Educació Inclusiva, ja que crec que les tecnologies,
-        ben aplicades, poden reduir barreres d’aprenentatge i permetre dissenyar materials inclusius i accessibles per a tot l’alumnat.
-      </p>
-      <button id="btn-veu" onclick="llegirText()" aria-label="Escoltar el text">🔊 Escoltar</button>
+    <section class="card" aria-labelledby="motiv-title" style="max-width: 600px; margin: 2rem auto; font-family: sans-serif;">
+        <h2 id="motiv-title">Motivació</h2>
+        <p id="motiv-text"> En una societat i una educació en constant transformació cap a un món cada vegada més tecnològic, conèixer i saber utilitzar les TIC és essencial per afrontar els reptes presents i futurs. Per això estic motivada per cursar Recursos TIC i Educació Inclusiva, ja que crec que les tecnologies, ben aplicades, poden reduir barreres d’aprenentatge i permetre dissenyar materials inclusius i accessibles per a tot l’alumnat. </p>
+        <button id="btn-veu" onclick="llegirText()" aria-label="Escoltar el text"> 🔊 Escoltar </button>
     </section>
 
     <section class="card" aria-labelledby="exp-title">
-      <h2 id="exp-title">Experiència prèvia</h2>
-      <p>Tinc experiència amb diferents TIC com Canva, Zoom, Google, Word i PowerPoint entre d’altres...</p>
-      <div class="video-container-vertical">
-        <iframe src="https://www.youtube.com/embed/iequu7ryxN8" 
-          title="Vídeo experiència prèvia" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
-        </iframe>
-      </div>
+        <h2 id="exp-title">Experiència prèvia</h2>
+        <p>Tinc experiència amb diferents TIC com Canva, Zoom, Google, Word i PowerPoint entre d’altres, que m’han permès elaborar materials, organitzar tasques i comunicar-me de manera més eficient en contextos acadèmics i professionals. Alhora, he treballat com a vetlladora amb infants amb TEA, TDAH i síndrome de Down, fet que m’ha ajudat a comprendre millor la importància de l’educació inclusiva i de garantir l’equitat i la participació dins l’aula.</p>
+        <div class="video-container-vertical">
+            <iframe src="https://www.youtube.com/embed/iequu7ryxN8" title="Vídeo experiència prèvia" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
     </section>
 
-    <!-- (La resta de seccions es mantenen igual que abans) -->
-  </main>
+    <section class="card grid-2" aria-labelledby="compet-title">
+        <div>
+            <h2 id="compet-title">Competència Digital</h2>
+            <ul>
+                <li><strong>Google Drive / Docs / Slides:</strong> elaboració de materials i treballs col·laboratius.</li>
+                <li><strong>Moodle:</strong> pujar recursos i crear activitats per a l’alumnat.</li>
+                <li><strong>Canva / Genially:</strong> crear recursos visuals i interactius.</li>
+                <li><strong>Edpuzzle / YouTube:</strong> creació i edició de recursos multimèdia.</li>
+                <li><strong>Eines d’accessibilitat:</strong> lector de pantalla, subtítols i gestors de contrast.</li>
+            </ul>
+        </div>
+        <div>
+            <h2>Punts forts i febles</h2>
+            <dl>
+                <dt>Punts forts</dt>
+                <dd>Empatia amb l’alumnat, creativitat en la creació de materials didàctics, facilitat per treballar en equip.</dd>
+                <dt>Punts febles</dt>
+                <dd>Necessito consolidar habilitats tècniques avançades i millorar la gestió del temps en projectes llargs.</dd>
+            </dl>
+        </div>
+    </section>
 
-  <script>
-    // 💬 Llegir només el text de la secció "Motivació"
-    function llegirText() {
-      speechSynthesis.cancel();
-      const text = document.getElementById("motiv-text").innerText;
-      const utterance = new SpeechSynthesisUtterance(text);
-      utterance.lang = "ca-ES";
-      speechSynthesis.speak(utterance);
+    <section class="card" aria-labelledby="expect-title">
+        <h2 id="expect-title">Què espero de l'assignatura</h2>
+        <p>Aprendre estratègies, eines i adaptacions pràctiques per fer les classes més inclusives i accessibles.</p>
+    </section>
+
+    <section class="card grid-2" aria-labelledby="objectives-title">
+        <div>
+            <h2 id="objectives-title">Objectiu i compromís personal</h2>
+            <p>Em comprometo a realitzar les activitats amb rigor i aplicar el que aprengui a les meves pràctiques.</p>
+        </div>
+        <div>
+            <h2>Objectiu professional</h2>
+            <p>Vull treballar com a pedagoga en centres educatius o en projectes d’inclusió escolar.</p>
+        </div>
+    </section>
+
+    <section class="card" aria-labelledby="aps-title">
+        <h2 id="aps-title">Com ajuda una experiència APS</h2>
+        <p>Participar en un Aprenentatge-Servei (APS) permet aplicar coneixements en projectes reals, generar impacte social i desenvolupar habilitats socioemocionals.</p>
+    </section>
+
+    <section class="card" aria-labelledby="other-title">
+        <h2 id="other-title">Altra informació d’interès</h2>
+        <p>Sóc compromesa amb l’educació com a eina transformadora. M’interessa la innovació educativa i el disseny de recursos.</p>
+        <div class="actions">
+            <a class="button" href="Curriculum SUHAILA-18.pdf" target="_blank">Descarregar el meu Curriculum (PDF)</a>
+        </div>
+    </section>
+
+    <section class="card" aria-labelledby="reflex-title">
+        <h2 id="reflex-title">Reflexió sobre l'activitat</h2>
+        <p> He trobat alguns reptes en inserir el vídeo i en fer que el disseny fos completament responsiu, però després de provar diferents solucions, he aconseguit que tot funcioni correctament. Durant aquesta activitat he après a organitzar la informació de manera clara i atractiva, i a crear un perfil persona que sigui accessible i comprensible per a qualsevol usuari. </p>
+    </section>
+
+</main>
+
+<script>
+// --- 1. FUNCIÓN ORIGINAL: Leer texto por botón (Motivación) ---
+function llegirText() {
+    const text = document.getElementById("motiv-text").innerText;
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = "ca-ES";
+    speechSynthesis.speak(utterance);
+}
+
+
+// --- 2. JAVASCRIPT: Botón de Contraste Alto ---
+
+const body = document.body;
+const contrastButton = document.getElementById('toggle-contrast');
+
+// Función para alternar la clase de alto contraste
+function toggleHighContrast() {
+    // Alternar la clase en el body
+    body.classList.toggle('high-contrast');
+    
+    // Actualizar el estado aria-pressed
+    const isHighContrast = body.classList.contains('high-contrast');
+    contrastButton.setAttribute('aria-pressed', isHighContrast);
+
+    // Opcional: guardar la preferencia del usuario en localStorage
+    localStorage.setItem('highContrast', isHighContrast ? 'yes' : 'no');
+}
+
+// Escuchar el click en el botón
+contrastButton.addEventListener('click', toggleHighContrast);
+
+// Opcional: Cargar la preferencia al iniciar la página
+(function loadContrastPreference() {
+    if (localStorage.getItem('highContrast') === 'yes') {
+        body.classList.add('high-contrast');
+        contrastButton.setAttribute('aria-pressed', 'true');
+    }
+})();
+
+
+// --- 3. JAVASCRIPT: Texto a Voz al Pasar el Ratón (Speech on Hover) ---
+
+const synth = window.speechSynthesis;
+let currentUtterance = null;
+let speakingElement = null; // Para rastrear el elemento que se está leyendo
+
+// Función para iniciar la lectura
+function speakText(element, text) {
+    // 1. Si ya se está leyendo el mismo elemento o no hay texto, salir
+    if (speakingElement === element || !text) {
+        return;
     }
 
-    // 💬 Llegir tota la pàgina
-    function llegirPagina() {
-      speechSynthesis.cancel();
-      const text = document.querySelector("main").innerText;
-      const utterance = new SpeechSynthesisUtterance(text);
-      utterance.lang = "ca-ES";
-      speechSynthesis.speak(utterance);
+    // 2. Detener cualquier lectura en curso (incluida la del botón "Escoltar")
+    if (synth.speaking) {
+        synth.cancel();
+        // Quitar la clase de lectura del elemento anterior
+        if (speakingElement) {
+            speakingElement.classList.remove('reading-text');
+        }
     }
+    
+    // 3. Crear una nueva solicitud de voz (utterance)
+    currentUtterance = new SpeechSynthesisUtterance(text);
+    currentUtterance.lang = 'ca-ES'; // Idioma catalán (consistente con el botón)
+    currentUtterance.rate = 1.0; 
 
-    // 🎚️ Canviar contrast
-    function canviarContrast() {
-      document.body.classList.toggle("alt-contrast");
+    // 4. Marcar el elemento como el que se está leyendo
+    speakingElement = element;
+    element.classList.add('reading-text');
+
+    // 5. Quitar la marca de lectura cuando termine
+    currentUtterance.onend = () => {
+        element.classList.remove('reading-text');
+        speakingElement = null;
+    };
+
+    // 6. Iniciar la lectura
+    synth.speak(currentUtterance);
+}
+
+// Función para detener la lectura
+function stopSpeech() {
+    if (synth.speaking) {
+        synth.cancel();
     }
+    // Quitar la clase de lectura del elemento y resetear la variable
+    if (speakingElement) {
+        speakingElement.classList.remove('reading-text');
+    }
+    speakingElement = null;
+}
 
-    // 🖱️ Llegir elements al passar el ratolí
-    document.addEventListener("mouseover", function(e) {
-      if (e.target.tagName === "H1" || e.target.tagName === "H2" || e.target.tagName === "BUTTON" || e.target.tagName === "A") {
-        const utterance = new SpeechSynthesisUtterance(e.target.innerText);
-        utterance.lang = "ca-ES";
-        speechSynthesis.cancel();
-        speechSynthesis.speak(utterance);
-      }
+// Elementos a los que se aplica el texto a voz al pasar el ratón
+// Se incluyen: Párrafos, encabezados, elementos de lista, y términos/descripciones de listas (dt/dd)
+const readableElements = document.querySelectorAll('p, h1, h2, li, dt, dd'); 
+
+readableElements.forEach(element => {
+    // Cuando el ratón entra en el elemento (hover)
+    element.addEventListener('mouseenter', (event) => {
+        // Asegurarse de no leer contenido vacío o el botón de voz
+        const textToRead = event.target.textContent.trim();
+        speakText(event.target, textToRead);
     });
-  </script>
+
+    // Cuando el ratón sale del elemento o pierde el foco
+    element.addEventListener('mouseleave', stopSpeech);
+    element.addEventListener('blur', stopSpeech); 
+});
+
+// Detener la lectura si se pulsa el botón 'Escoltar' (para evitar conflicto)
+document.getElementById("btn-veu").addEventListener('click', stopSpeech);
+
+</script>
+
 </body>
 </html>

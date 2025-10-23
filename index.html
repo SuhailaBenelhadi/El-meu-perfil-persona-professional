@@ -33,8 +33,6 @@ body.high-contrast {
 /* --- ESTILOS BASE --- */
 * { box-sizing: border-box; margin: 0; padding: 0; }
 body { 
-    /* El tamaño de fuente base por defecto del navegador se mantiene (p.ej., 16px) */
-    /* Esto es CLAVE para que el zoom del navegador funcione correctamente */
     font-family: "Inter", system-ui, sans-serif; 
     background: var(--bg); 
     color: var(--text); 
@@ -59,8 +57,6 @@ header { display: flex; gap: 16px; align-items: center; margin-bottom: 20px; }
     border-radius: 50%; overflow: hidden; 
 } 
 .avatar img { width: 96px; height: 96px; border-radius: 50%; object-fit: cover; display: block; } 
-/* Uso de rem/em es una buena práctica para el zoom. 
-   Aquí se usa implícitamente ya que no se redefinen los tamaños base. */
 h1 { font-size: 1.8em; margin: 0; color: var(--accent); } 
 p.lead { margin-top: 6px; color: var(--muted); } 
 .card { 
@@ -94,7 +90,6 @@ ul { margin: 6px 0 0; padding-left: 20px; }
 li { margin-bottom: 6px; } 
 .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; } 
 @media(max-width:700px){ 
-    /* Esta Media Query asegura el Reflow (WCAG 1.4.10) */
     .grid-2 { grid-template-columns: 1fr; } 
     dl { grid-template-columns: 120px 1fr; } 
 } 
@@ -106,7 +101,6 @@ a.button {
     background: var(--accent); 
     box-shadow: 0 0 10px rgba(191,169,160,0.6); 
     transition: transform 0.2s, box-shadow 0.3s; 
-    /* Asegurar que el focus sea visible */
     outline: 3px solid transparent; 
     outline-offset: 2px;
 } 
@@ -150,7 +144,7 @@ pre { background: rgba(0,0,0,0.02); padding: 8px; border-radius: 6px; overflow-x
     font-weight: 600;
     transition: all 0.2s;
     margin-left: 20px;
-    min-width: 120px; /* Tamaño mínimo para asegurar tap target al 100% */
+    min-width: 120px;
     outline: 3px solid transparent; 
     outline-offset: 2px;
 }
@@ -169,10 +163,9 @@ body.high-contrast #toggle-contrast {
     outline-offset: 3px;
 }
 
-
 /* --- ESTILO NUEVO: Resaltar texto al leer (feedback visual) --- */
 .reading-text {
-    background-color: var(--accent-glow); /* Fondo de resaltado */
+    background-color: var(--accent-glow); 
     color: var(--text);
     padding: 2px 4px;
     border-radius: 3px;
@@ -181,6 +174,18 @@ body.high-contrast #toggle-contrast {
 body.high-contrast .reading-text {
     background-color: var(--accent);
     color: var(--bg);
+}
+
+/* 🟢 CÓDIGO AÑADIDO: MAGNIFICACIÓN VISUAL (ZOOM EN HOVER) 🟢 */
+/* Se aplica a los bloques de texto y listas para un efecto sutil al pasar el ratón */
+p:hover, li:hover, dt:hover, dd:hover {
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s; 
+    transform: scale(1.02); 
+    position: relative; 
+    z-index: 10;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    /* Asegurar que el Texto a Voz y la Magnificación coexistan */
+    cursor: pointer; 
 }
 
 </style>
@@ -276,7 +281,7 @@ body.high-contrast .reading-text {
 
     <section class="card" aria-labelledby="reflex-title">
         <h2 id="reflex-title">Reflexió sobre l'activitat</h2>
-        <p> He trobat alguns reptes en inserir el vídeo i en fer que el disseny fos completament responsiu, però després de provar diferents solucions, he aconseguit que tot funcioni correctament. Durant aquesta activitat he après a organitzar la informació de manera clara i atractiva, i a crear un perfil persona que sigui accessible i comprensible per a qualsevol usuari. </p>
+        <p> He trobat alguns reptes en inserir el vídeo i en fer que el disseny fos completament responsiu, però després de provar diferents solucions, he aconseguit que tot funcioni correctament. Durant aquesta activitat he après a organitzar la informació de manera clara i atractiva, y a crear un perfil persona que sigui accessible i comprensible per a qualsevol usuari. </p>
     </section>
 
 </main>

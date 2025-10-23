@@ -5,11 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Perfil Persona - Estudiant de Pedagogia</title>
   <meta name="description" content="Perfil persona professional - Estudiant de Pedagogia. Recursos TIC i Educació Inclusiva." />
+
   <style>
     :root {
       --accent: #BFA9A0;      
       --accent-glow: #D0B7B0; 
-      --muted: #8C7C76;       
+      --muted: #6B5D57;        /* 🔧 Contraste mejorado */
       --card-bg: #FFFFFF;      
       --text: #2C2A28;        
       --bg: #F5F2F0;          
@@ -28,6 +29,20 @@
 
     .container { max-width: 900px; margin: 32px auto; padding: 20px; width: 100%; }
 
+    /* 🔗 Enlace para saltar al contenido */
+    .skip-link {
+      position: absolute;
+      top: -40px;
+      left: 0;
+      background: #000;
+      color: #fff;
+      padding: 8px 12px;
+      z-index: 100;
+      border-radius: 4px;
+      transition: top 0.3s;
+    }
+    .skip-link:focus { top: 0; }
+
     header {
       display: flex; gap: 16px; align-items: center; margin-bottom: 20px;
     }
@@ -38,7 +53,6 @@
       display: flex; align-items: center; justify-content: center;
       color: white; font-weight: 700; font-size: 28px;
       box-shadow: 0 0 15px var(--accent-glow);
-      border-radius: 50%;
       overflow: hidden;
     }
     .avatar img {
@@ -122,62 +136,52 @@
       font-size: 0.85rem;
     }
 
-    /* 🎥 Estilo para video tipo reel (YouTube Shorts) */
+    /* 🎥 Vídeo vertical (tipo reel) */
     .video-container-vertical {
       position: relative;
       width: 100%;
-      max-width: 350px;   /* 👈 límite de tamaño, así no ocupa toda la pantalla */
-      margin: 12px auto;  /* 👈 centrado */
-      padding-bottom: 75%; /* relación 9:16 (reel/shorts) */
+      max-width: 350px;
+      margin: 12px auto;
+      padding-bottom: 75%;
       border-radius: 12px;
       overflow: hidden;
       box-shadow: 0 4px 12px rgba(0,0,0,0.15);
     }
     .video-container-vertical iframe {
       position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
       border: none;
     }
 
+    /* 🔊 Botón de voz accesible */
     #btn-veu {
-  background-color: #0078d7;
-  color: white;
-  font-size: 1.2rem;
-  padding: 0.8rem 1.5rem;
-  border: none;
-  border-radius: 12px;
-  cursor: pointer;
-  transition: background-color 0.3s, transform 0.2s;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-#btn-veu:hover {
-  background-color: #005fa3;
-  transform: scale(1.05);
-}
-
-#btn-veu:active {
-  transform: scale(0.97);
-}
-
-#btn-veu:focus {
-  outline: 3px solid #ffcc00;
-  outline-offset: 3px;
-}
+      background-color: #0078d7;
+      color: white;
+      font-size: 1.2rem;
+      padding: 0.8rem 1.5rem;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    #btn-veu:hover { background-color: #005fa3; transform: scale(1.05); }
+    #btn-veu:active { transform: scale(0.97); }
+    #btn-veu:focus { outline: 3px solid #ffcc00; outline-offset: 3px; }
   </style>
 </head>
-<body>
-  <main class="container" role="main">
-    <header>
-     <div class="avatar">
-      <img src="SH.jpg" alt="Foto de Suhaila Ben El Hadi" />
-    </div>
 
+<body>
+  <a href="#main-content" class="skip-link">Saltar al contingut principal</a>
+
+  <main id="main-content" class="container" role="main">
+    <header>
+      <div class="avatar">
+        <img src="SH.jpg" alt="Foto de Suhaila Ben El Hadi" />
+      </div>
       <div>
         <h1>Perfil Persona - Estudiant de Pedagogia</h1>
         <p class="lead">Perfil professional per a l'assignatura Recursos TIC i Educació Inclusiva</p>
@@ -188,40 +192,36 @@
       <h2 id="ident-title">Identificació</h2>
       <dl>
         <dt>Nom</dt><dd>Suhaila Ben el Hadi El messaoudi</dd>
-        <dt>Correu</dt><dd>Suhabenelhadi@gmail.com</dd>
-        <dt>Xarxes</dt><dd><a href="https://www.instagram.com/suhailabenelhadi?igsh=OHp4dHhsaDB1ZHdl">Instagram</a></dd>
+        <dt>Correu</dt><dd><a href="mailto:Suhabenelhadi@gmail.com">Suhabenelhadi@gmail.com</a></dd>
+        <dt>Xarxes</dt>
+        <dd>
+          <a href="https://www.instagram.com/suhailabenelhadi"
+             target="_blank" rel="noopener"
+             aria-label="Perfil d'Instagram de Suhaila Ben El Hadi (s'obre en una pestanya nova)">
+             Instagram
+          </a>
+        </dd>
       </dl>
     </section>
 
-<section class="card" aria-labelledby="motiv-title" style="max-width: 600px; margin: 2rem auto; font-family: sans-serif;">
-  <h2 id="motiv-title">Motivació</h2>
-  <p id="motiv-text">
-    En una societat i una educació en constant transformació cap a un món cada vegada més tecnològic, conèixer i saber utilitzar les TIC és essencial per afrontar els reptes presents i futurs. Per això estic motivada per cursar Recursos TIC i Educació Inclusiva, ja que crec que les tecnologies, ben aplicades, poden reduir barreres d’aprenentatge i permetre dissenyar materials inclusius i accessibles per a tot l’alumnat.
-  </p>
+    <section class="card" aria-labelledby="motiv-title" style="max-width: 600px; margin: 2rem auto;">
+      <h2 id="motiv-title">Motivació</h2>
+      <p id="motiv-text" aria-live="polite">
+        En una societat i una educació en constant transformació cap a un món cada vegada més tecnològic, conèixer i saber utilitzar les TIC és essencial per afrontar els reptes presents i futurs. Per això estic motivada per cursar Recursos TIC i Educació Inclusiva, ja que crec que les tecnologies, ben aplicades, poden reduir barreres d’aprenentatge i permetre dissenyar materials inclusius i accessibles per a tot l’alumnat.
+      </p>
 
-  <button id="btn-veu" onclick="llegirText()" aria-label="Escoltar el text">
-    🔊 Escoltar
-  </button>
-</section>
-
-<script>
-function llegirText() {
-  const text = document.getElementById("motiv-text").innerText;
-  const utterance = new SpeechSynthesisUtterance(text);
-  utterance.lang = "ca-ES";
-  speechSynthesis.speak(utterance);
-}
-</script>
-
+      <button id="btn-veu" onclick="llegirText()" aria-label="Escoltar el text motivacional">
+        🔊 Escoltar
+      </button>
+    </section>
 
     <section class="card" aria-labelledby="exp-title">
       <h2 id="exp-title">Experiència prèvia</h2>
-      <p>Tinc experiència amb diferents TIC com Canva, Zoom, Google, Word i PowerPoint entre d’altres, que m’han permès elaborar materials, organitzar tasques i comunicar-me de manera més eficient en contextos acadèmics i professionals. Alhora, he treballat com a vetlladora amb infants amb TEA, TDAH i síndrome de Down, fet que m’ha ajudat a comprendre millor la importància de l’educació inclusiva i de garantir l’equitat i la participació dins l’aula.</p>
-      
-      <!-- 🎥 Vídeo en formato reel -->
+      <p>Tinc experiència amb diferents TIC com Canva, Zoom, Google, Word i PowerPoint, que m’han permès elaborar materials, organitzar tasques i comunicar-me millor. També he treballat com a vetlladora amb infants amb TEA, TDAH i síndrome de Down, fet que m’ha ajudat a comprendre la importància de l’educació inclusiva.</p>
+
       <div class="video-container-vertical">
-        <iframe src="https://www.youtube.com/embed/iequu7ryxN8" 
-          title="Vídeo experiència prèvia"
+        <iframe src="https://www.youtube.com/embed/iequu7ryxN8"
+          title="Vídeo sobre experiència prèvia amb subtítols disponibles"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowfullscreen>
         </iframe>
@@ -243,7 +243,7 @@ function llegirText() {
         <h2>Punts forts i febles</h2>
         <dl>
           <dt>Punts forts</dt>
-          <dd>Empatia amb l’alumnat, creativitat en la creació de materials didàctics, facilitat per treballar en equip.</dd>
+          <dd>Empatia amb l’alumnat, creativitat en materials didàctics, facilitat per treballar en equip.</dd>
           <dt>Punts febles</dt>
           <dd>Necessito consolidar habilitats tècniques avançades i millorar la gestió del temps en projectes llargs.</dd>
         </dl>
@@ -275,19 +275,31 @@ function llegirText() {
       <h2 id="other-title">Altra informació d’interès</h2>
       <p>Sóc compromesa amb l’educació com a eina transformadora. M’interessa la innovació educativa i el disseny de recursos.</p>
       <div class="actions">
-        <a class="button" href="Curriculum SUHAILA-18.pdf" target="_blank">Descarregar el meu Curriculum (PDF)</a>
+        <a class="button" href="Curriculum SUHAILA-18.pdf" target="_blank" rel="noopener"
+           aria-label="Descarregar el meu currículum en PDF (s'obre en una pestanya nova)">
+           Descarregar el meu Curriculum (PDF)
+        </a>
       </div>
     </section>
 
     <section class="card" aria-labelledby="reflex-title">
       <h2 id="reflex-title">Reflexió sobre l'activitat</h2>
-      <p>
-        He trobat alguns reptes en inserir el vídeo i en fer que el disseny fos completament responsiu,
-        però després de provar diferents solucions, he aconseguit que tot funcioni correctament.
-        Durant aquesta activitat he après a organitzar la informació de manera clara i atractiva, 
-        i a crear un perfil persona que sigui accessible i comprensible per a qualsevol usuari.
-      </p>
+      <p>He trobat reptes en inserir el vídeo i fer el disseny responsiu, però després de provar diferents solucions he aconseguit que tot funcioni correctament. Durant aquesta activitat he après a organitzar la informació de manera clara i atractiva, i a crear un perfil persona accessible per a qualsevol usuari.</p>
     </section>
+
+    <footer>
+      <p>&copy; 2025 Suhaila Ben El Hadi · Disseny adaptat per a accessibilitat web (WCAG 2.1 AA)</p>
+    </footer>
   </main>
+
+  <script>
+  function llegirText() {
+    speechSynthesis.cancel(); // 👈 Detén lectura anterior si existeix
+    const text = document.getElementById("motiv-text").innerText;
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = "ca-ES";
+    speechSynthesis.speak(utterance);
+  }
+  </script>
 </body>
 </html>

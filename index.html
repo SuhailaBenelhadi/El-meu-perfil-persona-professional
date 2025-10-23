@@ -141,49 +141,8 @@
       height: 100%;
       border: none;
     }
-  </style>
-</head>
-<body>
-  <main class="container" role="main">
-    <header>
-     <div class="avatar">
-      <img src="SH.jpg" alt="Foto de Suhaila Ben El Hadi" />
-    </div>
 
-      <div>
-        <h1>Perfil Persona - Estudiant de Pedagogia</h1>
-        <p class="lead">Perfil professional per a l'assignatura Recursos TIC i Educació Inclusiva</p>
-      </div>
-    </header>
-
-    <section class="card" aria-labelledby="ident-title">
-      <h2 id="ident-title">Identificació</h2>
-      <dl>
-        <dt>Nom</dt><dd>Suhaila Ben el Hadi El messaoudi</dd>
-        <dt>Correu</dt><dd>Suhabenelhadi@gmail.com</dd>
-        <dt>Xarxes</dt><dd><a href="https://www.instagram.com/suhailabenelhadi?igsh=OHp4dHhsaDB1ZHdl">Instagram</a></dd>
-      </dl>
-    </section>
-
-<section class="card" aria-labelledby="motiv-title">
-  <h2 id="motiv-title">Motivació</h2>
-  <p id="motiv-text">
-    En una societat i una educació en constant transformació cap a un món cada vegada més tecnològic, conèixer i saber utilitzar les TIC és essencial per afrontar els reptes presents i futurs. Per això estic motivada per cursar Recursos TIC i Educació Inclusiva, ja que crec que les tecnologies, ben aplicades, poden reduir barreres d’aprenentatge i permetre dissenyar materials inclusius i accessibles per a tot l’alumnat.
-  </p>
-
-  <button onclick="llegirText()" aria-label="Escoltar el text">🔊 Escoltar</button>
-</section>
-
-<script>
-function llegirText() {
-  const text = document.getElementById("motiv-text").innerText;
-  const utterance = new SpeechSynthesisUtterance(text);
-  utterance.lang = "ca-ES"; // veu en català
-  speechSynthesis.speak(utterance);
-}
-</script>
-<style>
-#btn-veu {
+    #btn-veu {
   background-color: #0078d7;
   color: white;
   font-size: 1.2rem;
@@ -210,7 +169,50 @@ function llegirText() {
   outline: 3px solid #ffcc00;
   outline-offset: 3px;
 }
-</style>
+  </style>
+</head>
+<body>
+  <main class="container" role="main">
+    <header>
+     <div class="avatar">
+      <img src="SH.jpg" alt="Foto de Suhaila Ben El Hadi" />
+    </div>
+
+      <div>
+        <h1>Perfil Persona - Estudiant de Pedagogia</h1>
+        <p class="lead">Perfil professional per a l'assignatura Recursos TIC i Educació Inclusiva</p>
+      </div>
+    </header>
+
+    <section class="card" aria-labelledby="ident-title">
+      <h2 id="ident-title">Identificació</h2>
+      <dl>
+        <dt>Nom</dt><dd>Suhaila Ben el Hadi El messaoudi</dd>
+        <dt>Correu</dt><dd>Suhabenelhadi@gmail.com</dd>
+        <dt>Xarxes</dt><dd><a href="https://www.instagram.com/suhailabenelhadi?igsh=OHp4dHhsaDB1ZHdl">Instagram</a></dd>
+      </dl>
+    </section>
+
+<section class="card" aria-labelledby="motiv-title" style="max-width: 600px; margin: 2rem auto; font-family: sans-serif;">
+  <h2 id="motiv-title">Motivació</h2>
+  <p id="motiv-text">
+    En una societat i una educació en constant transformació cap a un món cada vegada més tecnològic, conèixer i saber utilitzar les TIC és essencial per afrontar els reptes presents i futurs. Per això estic motivada per cursar Recursos TIC i Educació Inclusiva, ja que crec que les tecnologies, ben aplicades, poden reduir barreres d’aprenentatge i permetre dissenyar materials inclusius i accessibles per a tot l’alumnat.
+  </p>
+
+  <button id="btn-veu" onclick="llegirText()" aria-label="Escoltar el text">
+    🔊 Escoltar
+  </button>
+</section>
+
+<script>
+function llegirText() {
+  const text = document.getElementById("motiv-text").innerText;
+  const utterance = new SpeechSynthesisUtterance(text);
+  utterance.lang = "ca-ES";
+  speechSynthesis.speak(utterance);
+}
+</script>
+
 
     <section class="card" aria-labelledby="exp-title">
       <h2 id="exp-title">Experiència prèvia</h2>

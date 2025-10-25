@@ -122,16 +122,7 @@ pre { background: rgba(0,0,0,0.02); padding: 8px; border-radius: 6px; overflow-x
     box-shadow: 0 4px 12px rgba(0,0,0,0.15); 
 } 
 .video-container-vertical iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; } 
-/* Estilo del botón de audio original (btn-veu) */
-#btn-veu { 
-    background-color: #0078d7; color: white; font-size: 1.2em; 
-    padding: 0.8em 1.5em; border: none; border-radius: 12px; 
-    cursor: pointer; transition: background-color 0.3s, transform 0.2s; 
-    display: inline-flex; align-items: center; gap: 0.5em; 
-} 
-#btn-veu:hover { background-color: #005fa3; transform: scale(1.05); } 
-#btn-veu:active { transform: scale(0.97); } 
-#btn-veu:focus { outline: 3px solid #ffcc00; outline-offset: 3px; } 
+/* Estilo del botón de audio original (btn-veu) ELIMINAT */
 
 /* --- ESTILO NUEVO: Botón de Contraste --- */
 #toggle-contrast {
@@ -217,8 +208,7 @@ p:hover, li:hover, dt:hover, dd:hover {
     <section class="card" aria-labelledby="motiv-title" style="max-width: 600px; margin: 2rem auto; font-family: sans-serif;">
         <h2 id="motiv-title">Motivació</h2>
         <p id="motiv-text"> En una societat i una educació en constant transformació cap a un món cada vegada més tecnològic, conèixer i saber utilitzar les TIC és essencial per afrontar els reptes presents i futurs. Per això estic motivada per cursar Recursos TIC i Educació Inclusiva, ja que crec que les tecnologies, ben aplicades, poden reduir barreres d’aprenentatge i permetre dissenyar materials inclusius i accessibles per a tot l’alumnat. </p>
-        <button id="btn-veu" onclick="llegirText()" aria-label="Escoltar el text"> 🔊 Escoltar </button>
-    </section>
+        </section>
 
     <section class="card" aria-labelledby="exp-title">
         <h2 id="exp-title">Experiència prèvia</h2>
@@ -291,17 +281,7 @@ p:hover, li:hover, dt:hover, dd:hover {
 // --- SECCIÓN DE JAVASCRIPT PARA ACCESIBILIDAD ---
 // ------------------------------------------------
 
-// --- 1. FUNCIÓN ORIGINAL: Leer texto por botón (Motivación) ---
-function llegirText() {
-    // Detener la lectura del hover si está activa
-    stopSpeech(); 
-    
-    const text = document.getElementById("motiv-text").innerText;
-    const utterance = new SpeechSynthesisUtterance(text);
-    utterance.lang = "ca-ES";
-    speechSynthesis.speak(utterance);
-}
-
+// --- 1. FUNCIÓN ORIGINAL: Llegir text per botó (ELIMINADA) ---
 
 // --- 2. JAVASCRIPT: Botón de Contraste Alto ---
 
@@ -400,8 +380,7 @@ readableElements.forEach(element => {
     element.addEventListener('blur', stopSpeech); 
 });
 
-// Detener la lectura si se pulsa el botón 'Escoltar' (para evitar conflicto)
-document.getElementById("btn-veu").addEventListener('click', stopSpeech);
+// El listener del botó "btn-veu" ha estat ELIMINAT.
 
 </script>
 
